@@ -20,6 +20,22 @@ public class WassupServer {
                 .start();
     }
 
+    private void stop() {
+        if (server != null) {
+            server.shutdown();
+        }
+    }
+
+    /**
+     * Await termination on the main thread since the grpc library uses daemon threads.
+     */
+    private void blockUntilShutdown() throws InterruptedException {
+        if (server != null) {
+            server.awaitTermination();
+        }
+    }
+
+
     static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
         @Override
