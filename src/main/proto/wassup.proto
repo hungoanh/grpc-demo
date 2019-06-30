@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.java.wassup";
+option java_outer_classname = "WassupProto";
+option objc_class_prefix = "WSP";
+
+package wassup;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (WassupRequest) returns (WassupReply) {}
+}
+
+// The request message containing the user's name.
+message WassupRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message WassupReply {
+  string message = 1;
+}
